@@ -20,3 +20,6 @@ db-reset:
 
 bundle:
 	docker-compose run --rm $(RAILS) bundle install
+
+rspec:
+	docker-compose run --rm $(RAILS) rspec
