@@ -3,6 +3,7 @@
 ```
 git clone git@github.com:osatoh/rails_graphql_template.git
 make init
+make up
 ```
 
 That's it!
