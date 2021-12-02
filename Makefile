@@ -1,25 +1,24 @@
-RAILS = web
+RAILS=app
 
 help:
 	cat Makefile
 
-init: build up
+init: build
 
 build:
-	docker-compose build
+	docker-compose -f docker-compose.yml -f docker-compose-dev.yml build
 
 up:
 	docker-compose up
 
+serve: sync-start
+	docker-compose -f docker-compose.yml -f docker-compose-dev.yml up
+
 down:
 	docker-compose down
-
-db-reset:
-	docker-compose run --rm $(RAILS) rails db:migrate:reset
-	docker-compose run --rm $(RAILS) rails db:seed
 
 bundle:
 	docker-compose run --rm $(RAILS) bundle install
 
-rspec:
-	docker-compose run --rm $(RAILS) rspec
+sync-start:
+	docker-sync start
